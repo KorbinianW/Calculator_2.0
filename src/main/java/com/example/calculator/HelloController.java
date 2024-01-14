@@ -30,6 +30,8 @@ public class HelloController {
     private Button N8;
     @FXML
     private Button N9;
+    @FXML
+    private Button Delete;
 
 
     @FXML
@@ -105,7 +107,9 @@ public class HelloController {
     }
     @FXML
     protected void onDeleteClicked() {
-
+        char[] step = calculation.toCharArray();
+        char i = calculation.charAt(calculation.length() - 1);
+        calculation = calculation.replace(i, ' ').trim();
         Display.setText(calculation);
 
     }
@@ -114,7 +118,7 @@ public class HelloController {
         char[] result = calculation.toCharArray();
         int i = 0;
         while (i <= calculation.length()){
-            
+
         };
     }
 
