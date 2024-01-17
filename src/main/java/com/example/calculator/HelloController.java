@@ -5,9 +5,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
+
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.valueOf;
+
 public class HelloController {
 
-    String calculation = "";
+    char operator;
+    int result;
+    StringBuilder calculation = new StringBuilder();
+    int res1;
+    int res2;
+
+
     @FXML
     private Label Display;
     @FXML
@@ -36,90 +48,127 @@ public class HelloController {
 
     @FXML
     protected void onN0Clicked() {
-        calculation = calculation + "0";
-        Display.setText(calculation);
+        calculation.append(0);
+        Display.setText(String.valueOf(calculation));
     }
 
     @FXML
     protected void onN1Clicked() {
-        calculation = calculation + "1";
-        Display.setText(calculation);
+        calculation.append(1);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN2Clicked() {
-        calculation = calculation + "2";
-        Display.setText(calculation);
+        calculation.append(2);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN3Clicked() {
-        calculation = calculation + "3";
-        Display.setText(calculation);
+        calculation.append(3);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN4Clicked() {
-        calculation = calculation + "4";
-        Display.setText(calculation);
+        calculation.append(4);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN5Clicked() {
-        calculation = calculation + "5";
-        Display.setText(calculation);
+        calculation.append(5);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN6Clicked() {
-        calculation = calculation + "6";
-        Display.setText(calculation);
+        calculation.append(6);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN7Clicked() {
-        calculation = calculation + "7";
-        Display.setText(calculation);
+        calculation.append(7);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN8Clicked() {
-        calculation = calculation + "8";
-        Display.setText(calculation);
+        calculation.append(8);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onN9Clicked() {
-        calculation = calculation + "9";
-        Display.setText(calculation);
+        calculation.append(9);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onPlusClicked() {
-        calculation = calculation + "+";
-        Display.setText(calculation);
+        res1 = parseInt(String.valueOf(calculation));
+        operator = '+';
+        Display.setText("");
+        calculation.delete(0, calculation.length());
     }
+
     @FXML
     protected void onMinusClicked() {
-        calculation = calculation + "-";
-        Display.setText(calculation);
+        res1 = Integer.parseInt(String.valueOf(calculation));
+        operator = '-';
+        //Display.setText("");
+        calculation.replace(0, calculation.length()-1, "");
     }
+
     @FXML
     protected void onMultipleClicked() {
-        calculation = calculation + "*";
-        Display.setText(calculation);
+        res1 = Integer.parseInt(String.valueOf(calculation));
+        operator = '*';
+        //Display.setText("");
+        calculation = null;
     }
+
     @FXML
     protected void onDivideClicked() {
-        calculation = calculation + "/";
-        Display.setText(calculation);
+        res1 = Integer.parseInt(String.valueOf(calculation));
+        operator = '/';
+        //Display.setText("");
+        calculation.delete(0, calculation.length()-1);
     }
+
     @FXML
     protected void onDeleteClicked() {
-        char[] step = calculation.toCharArray();
+        /*char[] step = calculation.toCharArray();
         char i = calculation.charAt(calculation.length() - 1);
         calculation = calculation.replace(i, ' ').trim();
-        Display.setText(calculation);
-
+        */
+        calculation.deleteCharAt(calculation.length()-1);
+        Display.setText(String.valueOf(calculation));
     }
+
     @FXML
     protected void onEqualsClicked() {
-        char[] result = calculation.toCharArray();
-        int i = 0;
-        while (i <= calculation.length()){
+        res2 = parseInt(Display.getText());
+        switch (operator) {
+            case '+':
+                result = res1 + res2;
+                Display.setText(String.valueOf(result));
 
-        };
+            case '-':
+                result = parseInt(String.valueOf(calculation)) - parseInt(Display.getText());
+                Display.setText(String.valueOf(result));
+
+            case '*':
+                result = valueOf(String.valueOf(calculation)) * valueOf(Display.getText());
+                Display.setText(String.valueOf(result));
+
+            case '/':
+                result = valueOf(String.valueOf(calculation)) / valueOf(Display.getText());
+                Display.setText(String.valueOf(result));
+        }
+
     }
 
 }
