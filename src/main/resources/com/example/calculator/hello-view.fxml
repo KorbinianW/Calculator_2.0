@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.HelloController">
    <children>
-      <GridPane layoutX="102.0" layoutY="197.0" prefHeight="280.0" prefWidth="270.0">
+      <GridPane fx:id="GridPane" layoutX="5.0" layoutY="200.0" prefHeight="280.0" prefWidth="270.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="0.0" prefWidth="70.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" percentWidth="0.0" prefWidth="70.0" />
@@ -41,7 +41,7 @@
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button fx:id="Plus" mnemonicParsing="false" onAction="#onPlusClicked" prefHeight="70.0" prefWidth="70.0" text="+" GridPane.columnIndex="3">
+            <Button id="Plus" fx:id="Plus" mnemonicParsing="false" onAction="#onPlusClicked" prefHeight="70.0" prefWidth="70.0" text="+" GridPane.columnIndex="3">
                <font>
                   <Font size="30.0" />
                </font>
@@ -59,7 +59,7 @@
             </Button>
          </children>
       </GridPane>
-      <Label fx:id="Display" layoutX="105.0" layoutY="99.0" prefHeight="90.0" prefWidth="270.0" textAlignment="RIGHT">
+      <Label fx:id="Display" layoutX="5.0" layoutY="5.0" prefHeight="121.0" prefWidth="280.0" textAlignment="RIGHT" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="50.0" />
          </font>

@@ -2,8 +2,8 @@ package com.example.calculator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -14,36 +14,13 @@ import static java.lang.Integer.valueOf;
 public class HelloController {
 
     char operator;
-    int result;
+    Integer Result;
     StringBuilder calculation = new StringBuilder();
     int res1;
     int res2;
 
-
     @FXML
     private Label Display;
-    @FXML
-    private Button N0;
-    @FXML
-    private Button N1;
-    @FXML
-    private Button N2;
-    @FXML
-    private Button N3;
-    @FXML
-    private Button N4;
-    @FXML
-    private Button N5;
-    @FXML
-    private Button N6;
-    @FXML
-    private Button N7;
-    @FXML
-    private Button N8;
-    @FXML
-    private Button N9;
-    @FXML
-    private Button Delete;
 
 
     @FXML
@@ -108,7 +85,7 @@ public class HelloController {
 
     @FXML
     protected void onPlusClicked() {
-        res1 = parseInt(String.valueOf(calculation));
+        res1 = Integer.parseInt(String.valueOf(calculation));
         operator = '+';
         Display.setText("");
         calculation.delete(0, calculation.length());
@@ -150,23 +127,26 @@ public class HelloController {
 
     @FXML
     protected void onEqualsClicked() {
-        res2 = parseInt(Display.getText());
+        res2 = Integer.parseInt(String.valueOf(calculation));
         switch (operator) {
             case '+':
-                result = res1 + res2;
-                Display.setText(String.valueOf(result));
+                Result = res1 + res2;
+                System.out.println(res1);
+                System.out.println(res2);
+                System.out.println(Result);
+                Display.setText("" +Result);
 
             case '-':
-                result = parseInt(String.valueOf(calculation)) - parseInt(Display.getText());
-                Display.setText(String.valueOf(result));
+                Result = parseInt(String.valueOf(calculation)) - parseInt(Display.getText());
+                Display.setText(String.valueOf(Result));
 
             case '*':
-                result = valueOf(String.valueOf(calculation)) * valueOf(Display.getText());
-                Display.setText(String.valueOf(result));
+                Result = parseInt(String.valueOf(calculation)) * parseInt(Display.getText());
+                Display.setText(String.valueOf(Result));
 
             case '/':
-                result = valueOf(String.valueOf(calculation)) / valueOf(Display.getText());
-                Display.setText(String.valueOf(result));
+                Result = valueOf(String.valueOf(calculation)) / valueOf(Display.getText());
+                Display.setText(String.valueOf(Result));
         }
 
     }

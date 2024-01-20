@@ -1,0 +1,12 @@
+Label {
+    -fx-background-color: BEIGE;
+}
+
+GridPane{
+    -fx-background-color: #616161;
+}
+
+Button{
+    -fx-background-color: #616161;
+    -fx-border-color: #122312;
+}
