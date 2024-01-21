@@ -1,20 +1,12 @@
 package com.example.calculator;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
-
-import static java.lang.Integer.parseInt;
-import static java.lang.Integer.valueOf;
-
-public class HelloController {
+public class Controller {
 
     char operator;
-    Integer Result;
+    int result;
     StringBuilder calculation = new StringBuilder();
     int res1;
     int res2;
@@ -112,9 +104,14 @@ public class HelloController {
     }
 
     @FXML
-    protected void onDeleteClicked() {
-        calculation.deleteCharAt(calculation.length()-1);
-        Display.setText(String.valueOf(calculation));
+    protected void onDeleteClicked() throws StringIndexOutOfBoundsException {
+        try {
+            calculation.deleteCharAt(calculation.length() - 1);
+            Display.setText(String.valueOf(calculation));
+        }
+        catch (StringIndexOutOfBoundsException e) {
+
+        }
     }
 
     @FXML
@@ -122,23 +119,23 @@ public class HelloController {
         res2 = Integer.parseInt(String.valueOf(calculation));
         switch (operator) {
             case '+':
-                Result = res1 + res2;
-                Display.setText(Result.toString());
+                result = Math.addExact(res1, res2);
+                Display.setText(String.valueOf(result));
                 break;
 
             case '-':
-                Result = Math.subtractExact(res1, res2);
-                Display.setText(String.valueOf(Result));
+                result = Math.subtractExact(res1, res2);
+                Display.setText(String.valueOf(result));
                 break;
 
             case '*':
-                Result = Math.multiplyExact(res1, res2);
-                Display.setText(String.valueOf(Result));
+                result = Math.multiplyExact(res1, res2);
+                Display.setText(String.valueOf(result));
                 break;
 
             case '/':
-                Result = Math.floorDiv(res1, res2);
-                Display.setText(String.valueOf(Result));
+                result = Math.floorDiv(res1, res2);
+                Display.setText(String.valueOf(result));
                 break;
         }
 
