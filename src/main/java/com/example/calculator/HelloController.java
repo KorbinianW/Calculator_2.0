@@ -87,7 +87,6 @@ public class HelloController {
     protected void onPlusClicked() {
         res1 = Integer.parseInt(String.valueOf(calculation));
         operator = '+';
-        Display.setText("");
         calculation.delete(0, calculation.length());
     }
 
@@ -95,32 +94,25 @@ public class HelloController {
     protected void onMinusClicked() {
         res1 = Integer.parseInt(String.valueOf(calculation));
         operator = '-';
-        //Display.setText("");
-        calculation.replace(0, calculation.length()-1, "");
+        calculation.delete(0, calculation.length());
     }
 
     @FXML
     protected void onMultipleClicked() {
         res1 = Integer.parseInt(String.valueOf(calculation));
         operator = '*';
-        //Display.setText("");
-        calculation = null;
+        calculation.delete(0, calculation.length());
     }
 
     @FXML
     protected void onDivideClicked() {
         res1 = Integer.parseInt(String.valueOf(calculation));
         operator = '/';
-        //Display.setText("");
-        calculation.delete(0, calculation.length()-1);
+        calculation.delete(0, calculation.length());
     }
 
     @FXML
     protected void onDeleteClicked() {
-        /*char[] step = calculation.toCharArray();
-        char i = calculation.charAt(calculation.length() - 1);
-        calculation = calculation.replace(i, ' ').trim();
-        */
         calculation.deleteCharAt(calculation.length()-1);
         Display.setText(String.valueOf(calculation));
     }
@@ -131,22 +123,23 @@ public class HelloController {
         switch (operator) {
             case '+':
                 Result = res1 + res2;
-                System.out.println(res1);
-                System.out.println(res2);
-                System.out.println(Result);
-                Display.setText("" +Result);
+                Display.setText(Result.toString());
+                break;
 
             case '-':
-                Result = parseInt(String.valueOf(calculation)) - parseInt(Display.getText());
+                Result = Math.subtractExact(res1, res2);
                 Display.setText(String.valueOf(Result));
+                break;
 
             case '*':
-                Result = parseInt(String.valueOf(calculation)) * parseInt(Display.getText());
+                Result = Math.multiplyExact(res1, res2);
                 Display.setText(String.valueOf(Result));
+                break;
 
             case '/':
-                Result = valueOf(String.valueOf(calculation)) / valueOf(Display.getText());
+                Result = Math.floorDiv(res1, res2);
                 Display.setText(String.valueOf(Result));
+                break;
         }
 
     }
